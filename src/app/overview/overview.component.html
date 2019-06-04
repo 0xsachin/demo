@@ -1,0 +1,47 @@
+
+
+
+<h3>Personal Details</h3>
+
+      <input type="hidden"[(ngModel)]="model.id">
+
+      <label>
+          <span>Enter Your Name :</span>
+          <input [(ngModel)] = "model.name" placeholder="Name" #name>
+
+      </label>
+      
+      
+    
+          <span>&nbsp;</span> 
+          <div *ngIf = "!editFlag">
+            <button (click) = "saveData()"> Save </button>
+          </div>
+          <div *ngIf = "editFlag">
+              <button (click) = "editData()"> EDIT </button>
+          </div>
+
+     <div *ngIf = "displayList">
+
+          <table border="1px" >
+              <thead> 
+                <tr>
+                        <th>Sr No.</th> 
+                        <th>Your Name</th>    
+                        <th>Action</th>  
+                  </tr> 
+                </thead>
+             <tbody>
+                            <tr *ngFor = "let t of displayList.todos">
+                                <td>{{t.id}}</td>
+                                <td>{{t.name}}</td>
+             
+                                <td>
+                                
+                                    <button (click)="editData(t)">Edit</button>
+                                    <button (click)="deleteData(t)">Delete</button>
+                                </td>
+                            </tr>
+             </tbody> 
+          </table>
+     </div>
